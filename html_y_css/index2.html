@@ -17,8 +17,53 @@
   <link rel="alternate" href="github/harold.c o m " hreflang="es-MX">
 
   <style>
+    
     body {
       background: whitesmoke;
+      font-family:'Cascadia Code', 'Arial Narrow', Arial, sans-serif
+    }
+    h1 {
+      /* color: rgb(0 0 0 / 50% ) */
+      /* color: hsl(404, 50%, 60%); */
+      color: oklch(379 83% 45% / 50%);
+      border-width: 3px;
+      border-style: solid;
+    }
+
+    .link /*class*/ { 
+      color: goldenrod;
+    }
+
+    .link:hover /*pseudo-class*/{
+      color: red;
+      outline: 3px solid blue;
+    }
+
+    .link:active{
+      outline: 5px solid purple;
+    }
+
+    input:focus
+    #proyectos{
+      color: aqua;
+    }
+
+    li:first-child{
+      color: brown;
+    }
+
+    li:last-child{
+      color: magenta;
+    }
+
+    #button-contacto{
+     background: blueviolet;
+     color: white;
+     border: 0;
+    }
+
+    .description{
+      border: 1px solid ;
     }
   </style>
 
@@ -37,7 +82,7 @@
   <header>
     <h1>portfolio</h1>
 
-    <p>estudiante de <strong>ingenieria electronica.</strong></p>
+    <p class="description">estudiante de <strong>ingenieria electronica de la universidad del magdalena.</strong></p>
 
     <h2>experiencia: ninguna</h2>
     <ul>
@@ -48,11 +93,12 @@
     <a download href="/my_code_files/html_y_css/catluna.jpeg"></a>
     <img id="foto-gato" width="300" height="300" title="gato" alt="gato viral de instagram"
       src="/my_code_files/html_y_css/catluna.jpeg">
+
     <h2 id="proyectos">Proyectos realizados</h2>
     <nav>
-      <a href="#tecnologias">tecnologias</a>
-      <a href="#proyectos">Proyectos</a> <!--enlaces internos-->
-      <a href="#portfolio" target="_blank" rel="noreferrer">portfolio</a>
+      <a class="link" href="#tecnologias">tecnologias</a>
+      <a class="link" href="#proyectos">Proyectos</a> <!--enlaces internos-->
+      <a class="link" href="#portfolio" target="_blank" rel="noreferrer">portfolio</a>
     </nav>
   </header>
   <dialog id="dialog">
@@ -79,7 +125,7 @@
       <article>
         <header>
           <h4>Mona china hololive</h4>
-          <img height="250" width="300" loading="lazy" src="/kronni.jpg" alt="Fondo Kronni">
+          <img height="250" width="300" loading="lazy" src="/my_code_files/html_y_css/kronni.jpg" alt="Fondo Kronni">
         </header>
         <p>
           Fondo de pantalla de kronni de hololive
@@ -126,7 +172,7 @@
               <input type="tel" name="name" placeholder="300-xxx-xxxx" required pattern="[0-9]{9}">
             </label>
           </div>
-          <button>Enviar contacto</button>
+          <button id="button-contacto">Enviar contacto</button>
         </fieldset>
         <fieldset>
           <legend>Otros</legend>

@@ -1,0 +1,44 @@
+<p>texto de prueba para fallbacks. Los fallsback funcionan <br>
+    para cuando un estilo en css no funciona se pueda priorizar <br>
+    otro con la metolodogia de cascada.
+</p>
+
+<p class="especificidad">Texto para probar como funciona la especificidad <br>
+funciona dependiendo de los niveles por ejemplo los <br> ID:# son de primer nivel 
+luego vienen las clases<br> y por ultimo </p>
+<style>
+    /*la metodologia de cascada dice que los estilos
+    entre mas abajo esten mas se priorizan*/
+
+    body {
+        background: #f9edd2;
+    }
+
+    p {
+        font-size: 24px;
+        color: rgb(162, 32, 214);
+        font-family: sans-serif;
+        font-weight: bold;
+        text-align: start;
+    }
+
+    p {
+        color: rgb(0, 167, 117);
+        /*fallback en caso de que oklch no funcione*/
+        color: oklch(70% 0.269 325.06);
+    }
+
+    .especificidad {
+        font-size: 24px;
+        color: rgb(32, 35, 214);
+        font-family: Ubuntu;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .especificidad {
+        color: #b78b00;
+        font-family: Cascadia Code;
+
+    }
+</style>

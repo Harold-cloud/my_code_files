@@ -1,4 +1,5 @@
 <strong>La frase que te cambiará la vida</strong>
+
 <p class="description">
     Joven emponzoñado de <strong class="bold">whisky</strong>, menuda <strong class="bold">figurota</strong>!
 </p>
@@ -6,16 +7,80 @@
     Joven emponzoñado de <strong class="bold">whisky</strong>, menuda <strong class="bold">figurota</strong>!
 </p>
 
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>
+        <ul>
+            <li>Sub Item</li>
+            <li>Sub Item</li>
+            <li>Sub Item</li>
+        </ul>
+    </li>
+</ul>
+
+<article>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit quaerat et repellat cupiditate doloribus nulla!</p>
+
+    <footer>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </footer>
+
+    <p>Lorem, ipsum dolor.</p>
+
+
+    <span>Esto es negro </span>
+    <p>Parrafo</p>
+    <code>Aqui se pone codigo</code>
+    <span>Este span es rojo porque sale despues de la p</span>
+
+    <p>Parrafo 2</p>
+    <span>Este span es azul porque es el operador siguiente despues de la p</span>
+    
+</article>
+
+
+
+
 <style>
-    p{
+    p {
         font-size: 25px;
     }
+
     .description .bold {
         color: #09f;
     }
 
-    .secondary .bold{
+    .secondary .bold {
         color: red;
     }
-    
+
+    ul {
+        font-size: 30px;
+
+    }
+
+    ul>li {
+        opacity: 60%;
+    }
+
+    article {
+        font-size: 24px;
+    }
+
+    article>p {
+        /* etiqueta que aplica a los hijos directos de article osea p*/
+        color: seagreen;
+    }
+
+    p~span {
+        /* selector de hermanos generales donde los span despues de la p son rojos*/
+        color: red;
+    }
+
+    p+span {
+        /* etiqueta que aplica a los hermanos siguientes de la p osea span*/
+        color: blue;
+    }
 </style>

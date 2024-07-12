@@ -1,0 +1,77 @@
+<section class="parent">
+    <div class="container">
+        Container
+    </div>
+</section>
+
+<section class="parent">
+    <div class="container-2">
+        Container-2
+    </div>
+</section>
+
+<section class="parent">
+    <div class="container-3">
+        Container-3
+    </div>
+</section>
+
+<section class="parent">
+    <div class="container-4">
+        Container-4
+    </div>
+</section>
+
+<style>
+    .parent {
+        border: 5px solid black;
+        width: 250px;
+        height: 600px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .container {
+        background: rgb(266, 77, 22);
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+
+
+    .container-2 {
+        background: rgb(266, 77, 22);
+        width: 100px;
+        height: 100px;
+        position: sticky;
+        top: 0;
+        right: 0;
+    }
+
+
+    .container-3 {
+        background: rgb(266, 77, 22);
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+
+    .container-4 {
+        background: rgb(266, 77, 22);
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+
+    body {
+        background: rgb(121, 105, 105);
+    }
+</style>

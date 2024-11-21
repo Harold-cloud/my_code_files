@@ -1,0 +1,54 @@
+<section class="container">
+    <header>header</header>
+    <aside>aside</aside>
+    <main>content</main>
+    <footer>footer</footer>
+</section>
+
+<style>
+    body {
+        margin: 0;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 35px 1fr 100px;
+        min-height: 100vh;
+        grid-template-areas:
+            "header header sidebar"
+            "content content content"
+            "footer footer footer"
+    }
+
+    @media(width > 400px) {
+        .container {
+            grid-template-areas:
+                "header header ."
+                "sidebar content content"
+                "footer footer footer"
+        }
+    }
+
+    .container header {
+        background: #93E1D8;
+        grid-area: header;
+    }
+
+    .container aside {
+        background: #FFA69E;
+        grid-area: sidebar;
+    }
+
+    .container main {
+        background: #AA4465;
+        grid-area: content;
+
+    }
+
+    .container footer {
+        background: #861657;
+        grid-area: footer;
+
+    }
+</style>

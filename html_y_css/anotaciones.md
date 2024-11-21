@@ -47,6 +47,8 @@ default.
 
  `order:` Especifica el orden en el que se muestran los elementos en un contenedor flex. Los elementos con un valor menor de order aparecerán antes que los elementos con un valor mayor.
 
+### justify-content
+
  `justify-content:` Funciona a nivel de filas.
 
  | **Valor**            | **Descripción**                                                                                       | **Ejemplo de CSS**                     |
@@ -63,7 +65,9 @@ default.
 | `right`              | Alinea los elementos al final del contenedor (equivalente a `flex-end` en `row` o `end` en `ltr`).    | `justify-content: right;`            |
 
 
-`gap:<size>px` En CSS se usa para definir el espacio entre elementos en contenedores flexibles y en cuadrículas.
+`gap:<size>px` En CSS se usa para definir el espacio entre elementos en contenedores flexibles y en cuadrículas. La propiedad gap permite especificar ambos espacios (columnas y filas) en una sola línea. El primer valor es para grid-column-gap y el segundo para grid-row-gap. Si solo se proporciona un valor, se aplica a ambos.
+
+### align-content
 
 `align-content:` Funciona a nivel de columnas. (no es tan usado).
 
@@ -81,6 +85,8 @@ default.
 | `baseline`          | Alinea las líneas de contenido según sus líneas base de texto.                                                | `align-content: baseline;`       |
 | `last baseline`     | Alinea la línea de contenido en la última línea base.                                                       | `align-content: last baseline;`  |
 
+### align-items
+
 `align-items:` Se utiliza para alinear los elementos dentro de un contenedor flexbox o grid a lo largo del eje transversal, es decir, el eje perpendicular al eje principal. Esta propiedad afecta a los elementos dentro de una sola línea en un contenedor flex o a las filas/columnas en un contenedor grid.
 
 | **Valor**         | **Descripción**                                                                                         | **Ejemplo de CSS**                |
@@ -93,6 +99,7 @@ default.
 | `start`          | Alinea los elementos al inicio del contenedor, basado en la dirección de escritura del contenedor.        | 
  `align-items: start;` |
 
+### align-self
 
 `align-self:` Permite a un elemento específico en un contenedor flexbox o grid anular el comportamiento de alineación establecido por la propiedad align-items del contenedor. Esta propiedad controla cómo se alinea un elemento individual a lo largo del eje transversal del contenedor.
 
@@ -109,3 +116,135 @@ default.
 | `end`            | Alinea el elemento al final del contenedor, basado en la dirección de escritura del contenedor.           | `align-self: end;`             |
 | `self-start`     | Alinea el elemento al inicio del contenedor, en función de la dirección del contenido.                    | `align-self: self-start;`      |
 | `self-end`       | Alinea el elemento al final del contenedor, en función de la dirección del contenido.                      | `align-self: self-end;`        |
+
+
+## Grid
+
+`display: grid` 
+
+`grid-template-columns:`  Es una propiedad de CSS que se utiliza para definir las columnas de un grid en un diseño CSS Grid Layout. Esta propiedad especifica el número de columnas, así como su tamaño y comportamiento. Cada valor representa una columna en el grid. Puedes usar varias unidades de medida para definir el tamaño de las columnas.
+
+| Argumento       | Descripción                                                                                   | Ejemplo                                      |
+|-----------------|-----------------------------------------------------------------------------------------------|----------------------------------------------|
+| Longitudes fijas | Especifica el tamaño fijo de las columnas usando unidades como `px`, `em`, `rem`, etc.        | `grid-template-columns: 100px 200px 300px;`  |
+| Porcentajes     | Especifica el tamaño relativo al contenedor del grid usando porcentajes.                      | `grid-template-columns: 50% 50%;`            |
+| Fracciones (`fr`)| Usa fracciones del espacio disponible en el contenedor del grid.                             | `grid-template-columns: 1fr 2fr;`            |
+| Auto            | Ajusta automáticamente el tamaño de la columna según su contenido y espacio.                            | `grid-template-columns: auto auto;`          |
+| `minmax(min, max)`| Define un tamaño mínimo y máximo para una columna.                                          | `grid-template-columns: minmax(100px, 1fr);` |
+| `repeat(count, value)`| Crea múltiples columnas con el mismo tamaño.                                            | `grid-template-columns: repeat(3, 1fr);`     |
+
+
+`grid-template-rows:` En CSS se utiliza para definir las filas de un grid en un diseño CSS Grid Layout. Esta propiedad especifica el número de filas, así como su tamaño y comportamiento. Cada valor representa una fila en el grid. Puedes usar varias unidades de medida para definir el tamaño de las filas. Usa los mismos argumentos que `grid-template-columns` solo que en este caso va para las filas.
+
+>Nota:
+> **En grid se pueden crear cuadriculas sin la necesidad de tener elementos.**
+
+`grid-auto-rows:` Se utiliza para especificar el tamaño de las filas implícitas creadas por el grid container cuando no se definen todas las filas explícitamente en la propiedad grid-template-rows. Esto es útil cuando tienes más elementos en tu grid de los que has definido explícitamente en grid-template-rows.
+
+`minmax(min, max)` En CSS Grid Layout es una herramienta poderosa que permite definir un tamaño mínimo y máximo para las columnas o filas en un contenedor de grid. 
+
+`auto-fill;` Permite que las columnas o filas se rellenen automáticamente con tantos elementos como sea posible, ajustándose al contenedor. 
+
+`auto-fit;` Permite que las columnas o filas ocupen el espacio ajustandolo hasta los limites con la cantidad de elementos, llenando al contenedor. 
+
+`grid-column-start` y `grid-column-end` Te permiten especificar en qué líneas de la cuadrícula comienzan y terminan los elementos de la cuadrícula. Estas propiedades te permiten definir el tamaño y la posición de los elementos de manera precisa. Tienes varias maneras de representarse en la sintaxis de css.
+
+```
+grid-column-start: 2;  /* Comienza en la línea 2 */
+grid-column-end: span 3; /* Termina después de 3 líneas */
+grid-column: 2 / 4; /* Equivalente a grid-column-start: 2; grid-column-end: 4; */
+```
+
+### grid-area
+
+```
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 100px);
+    gap: 10px;
+    grid-template-areas:
+        "header header header"
+        "sidebar main main";
+}
+
+.header {
+    grid-area: header;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+```
+
+### justify-items
+
+`justify-items` se utiliza para alinear los elementos de la cuadrícula a lo largo del eje horizontal (es decir, a lo largo de las filas). Esta propiedad afecta a todos los elementos dentro de un contenedor de cuadrícula. 
+
+`start`: Alinea los elementos al inicio del contenedor de la cuadrícula.
+`end:`Alinea los elementos al final del contenedor de la cuadrícula.
+`center`: Alinea los elementos en el centro del contenedor de la cuadrícula.
+`stretch`: Estira los elementos para que ocupen todo el espacio disponible (este es el valor por defecto).
+
+| Valor     | Descripción                                        | Ejemplo CSS              |
+|-----------|----------------------------------------------------|--------------------------|
+| `start`   | Alinea los elementos al inicio del contenedor      | `justify-items: start;`  |
+| `end`     | Alinea los elementos al final del contenedor       | `justify-items: end;`    |
+| `center`  | Alinea los elementos en el centro del contenedor   | `justify-items: center;` |
+| `stretch` | Estira los elementos para ocupar todo el espacio   | `justify-items: stretch;` (valor por defecto) |
+
+
+### justify-self 
+
+`justify-self` en CSS Grid se utiliza para alinear individualmente los elementos de la cuadrícula a lo largo del eje horizontal (es decir, a lo largo de las filas) dentro de sus respectivas celdas. Esto proporciona un control más granular sobre la alineación de cada elemento en comparación con justify-items, que afecta a todos los elementos de la cuadrícula.
+
+start: Alinea el elemento al inicio de la celda.
+end: Alinea el elemento al final de la celda.
+center: Alinea el elemento en el centro de la celda.
+stretch: Estira el elemento para que ocupe todo el espacio disponible en la celda (este es el valor por defecto).
+
+| Valor     | Descripción                                        | Ejemplo CSS              |
+|-----------|----------------------------------------------------|--------------------------|
+| `start`   | Alinea el elemento al inicio de la celda           | `justify-self: start;`   |
+| `end`     | Alinea el elemento al final de la celda            | `justify-self: end;`     |
+| `center`  | Alinea el elemento en el centro de la celda        | `justify-self: center;`  |
+| `stretch` | Estira el elemento para ocupar todo el espacio     | `justify-self: stretch;` (valor por defecto) |
+
+
+### place-content
+
+`place-content` en CSS Grid es una forma abreviada de establecer tanto align-content como justify-content simultáneamente. Estas propiedades controlan la distribución del espacio entre y alrededor de los elementos de la cuadrícula a lo largo de los ejes vertical (columna) y horizontal (fila), respectivamente.
+
+center: Centra el contenido de la cuadrícula en ambos ejes.
+start: Alinea el contenido de la cuadrícula al inicio en ambos ejes.
+end: Alinea el contenido de la cuadrícula al final en ambos ejes.
+stretch: Estira el contenido de la cuadrícula para ocupar todo el espacio disponible en ambos ejes (este es el valor por defecto).
+space-between: Distribuye el contenido de la cuadrícula con espacio igual entre los elementos en ambos ejes.
+space-around: Distribuye el contenido de la cuadrícula con espacio igual alrededor de los elementos en ambos ejes.
+space-evenly: Distribuye el contenido de la cuadrícula con espacio igual entre y alrededor de los elementos en ambos ejes.
+
+| Valor            | Descripción                                                | Ejemplo CSS                                 |
+|------------------|------------------------------------------------------------|---------------------------------------------|
+| `center`         | Centra el contenido de la cuadrícula en ambos ejes         | `place-content: center center;`             |
+| `start`          | Alinea el contenido al inicio en ambos ejes                | `place-content: start start;`               |
+| `end`            | Alinea el contenido al final en ambos ejes                 | `place-content: end end;`                   |
+| `stretch`        | Estira el contenido para ocupar todo el espacio            | `place-content: stretch stretch;` (por defecto) |
+| `space-between`  | Distribuye el contenido con espacio igual entre elementos  | `place-content: space-between space-between;` |
+| `space-around`   | Distribuye el contenido con espacio igual alrededor de elementos | `place-content: space-around space-around;` |
+| `space-evenly`   | Distribuye el contenido con espacio igual entre y alrededor de elementos | `place-content: space-evenly space-evenly;` |
+
+
+>Nota
+>Content es el contenido de los elementos y el items es cada elemento individual.
+
+
+
+
+
+
+
+
